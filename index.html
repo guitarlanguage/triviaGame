@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Trivia</title>
+
+  </head>
+
+  <body>
+
+    <h1>Trivia</h1>
+
+    <button id="start-button">Start</button>
+    <!-- <button id="timer-button">Timer</button> -->
+
+
+    <br>
+    <br>
+
+    <!-- <button id="start">Button Timeout Start</button>
+    <button id="cancel">Button Timeout Cancel</button> -->
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Script -->
+    <script type="text/javascript">
+
+    window.onload = function() {
+        var number = 30;
+        var intervalId;
+        $("#start-button").on("click", run);
+        $("#start-button").on("click", decrement);
+
+        function run() {
+            clearInterval(intervalId);
+            intervalId = setInterval(decrement, 1000);
+        }
+        function decrement() {
+          //  Decrease number by one.
+            number--;
+          //  Show the number in the #show-number tag.
+            $("#start-button").html("<h2>" + "Time Remaining: " + number + "</h2>");
+            //  Once number hits zero...
+            if (number === 0) {
+            //  ...run the stop function.
+            stop();
+            //  Alert the user that time is up.
+            alert("All Done");
+            }
+        }
+
+        function stop() {
+            //  Clears our intervalId
+            //  We just pass the name of the interval
+            //  to the clearInterval function.
+        clearInterval(intervalId);
+        }
+    };
+
+
+    </script>
+
+  </body>
+
+</html>
