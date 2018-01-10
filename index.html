@@ -25,6 +25,8 @@
     <button id="start-button">Start</button>
     <!-- <button id="timer-button">Timer</button> -->
     <div id="theForm">
+        <div id="time">
+        </div>
         <form>
             <h3>What does CPG stand for?</h3>
             <label class="radio-inline">
@@ -72,6 +74,8 @@
                 <input type="radio" name="gender" value="other"> Certified Goat Planner
             </label>
         </form>
+
+        <button id="done-button">Done</button>
     </div>
 
 
@@ -99,12 +103,14 @@
             clearInterval(intervalId);
             intervalId = setInterval(decrement, 1000);
             $("#theForm").show();
+            $("#start-button").hide();
+
         }
         function decrement() {
           //  Decrease number by one.
             number--;
           //  Show the number in the #show-number tag.
-            $("#start-button").html("<h2>" + "Time Remaining: " + number + "</h2>");
+            $("#time").html("<h2>" + "Time Remaining: " + number + "</h2>");
             //  Once number hits zero...
             if (number === 0) {
             //  ...run the stop function.
