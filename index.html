@@ -5,7 +5,14 @@
 
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>Trivia</title>
 
@@ -13,10 +20,60 @@
 
   <body>
 
-    <h1>Trivia</h1>
+    <h1>Guitar Picker Trivia</h1>
 
     <button id="start-button">Start</button>
     <!-- <button id="timer-button">Timer</button> -->
+    <div id="theForm">
+        <form>
+            <h3>What does CPG stand for?</h3>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="Certified Guitar Player" checked> Certified Guitar Player<br>
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="gender" value="Chief Executive Officer"> Chief Executive Officer<br>
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="other"> Other
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="other"> Other
+            </label>
+        </form>
+
+        <form>
+            <h3>What does CPG stand for?</h3>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="Certified Guitar Player" checked> Certified Guitar Player<br>
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="gender" value="Chief Executive Officer"> Chief Executive Officer<br>
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="other"> Other
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="other"> Other
+            </label>
+        </form>
+
+        <form>
+            <h3>What does CGP stand for?</h3>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="Certified Guitar Player" checked> Certified Guitar Player<br>
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="gender" value="Chief Executive Officer"> Chief Executive Officer<br>
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="other"> Cello, Guitar, Piano ensemble
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="other"> Certified Goat Planner
+            </label>
+        </form>
+    </div>
+
 
 
     <br>
@@ -32,13 +89,16 @@
 
     window.onload = function() {
         var number = 30;
+        $("#theForm").hide();
         var intervalId;
         $("#start-button").on("click", run);
         $("#start-button").on("click", decrement);
 
+
         function run() {
             clearInterval(intervalId);
             intervalId = setInterval(decrement, 1000);
+            $("#theForm").show();
         }
         function decrement() {
           //  Decrease number by one.
