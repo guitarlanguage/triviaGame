@@ -78,6 +78,10 @@
         <button id="done-button">Done</button>
     </div>
 
+    <div id="result-page">
+        <h2>Score Tally</h2>
+    </div>
+
 
 
     <br>
@@ -94,18 +98,27 @@
     window.onload = function() {
         var number = 30;
         $("#theForm").hide();
+        $("#result-page").hide();
         var intervalId;
+        var right;
+        var wrong;
         $("#start-button").on("click", run);
         $("#start-button").on("click", decrement);
+        $("#done-button").on("click", done);
 
+        function done(){
+            $("#theForm").hide();
+            $("#result-page").show();
+            stop();
+        }
 
         function run() {
             clearInterval(intervalId);
             intervalId = setInterval(decrement, 1000);
             $("#theForm").show();
             $("#start-button").hide();
-
         }
+
         function decrement() {
           //  Decrease number by one.
             number--;
@@ -127,7 +140,6 @@
         clearInterval(intervalId);
         }
     };
-
 
     </script>
 
