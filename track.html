@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+  <head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Trivia</title>
+
+  </head>
+
+  <body>
+
+    <h1>Guitar Picker Trivia</h1>
+
+    <button id="start-button">Start</button>
+    <!-- <button id="timer-button">Timer</button> -->
+    <div id="theForm">
+        <div id="time">
+        </div>
+        <form>
+            <h3>Which is the most successful guitar player from following options</h3>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="Certified Guitar Player" checked> Touring Rockstar<br>
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="gender" value="Chief Executive Officer"> fully booked studio guitar player<br>
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="other"> Dude with guitar company endorsement
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="gww"> Guy who's wife is a doctor
+            </label>
+        </form>
+
+        <form>
+            <h3>Who composed Jiffy Jam?</h3>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="other" checked> Lenny Breau<br>
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="gender" value="Chief Executive Officer"> Chet Atkins<br>
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="jr"> Jerry Reed
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="other"> Buster Jones
+            </label>
+        </form>
+
+        <form>
+            <h3>What does CGP stand for?</h3>
+            <label class="radio-inline">
+                <input type="radio" name="cpg" value="Certified Guitar Player" checked> Certified Goat Planner<br>
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="cpg" value="Chief Executive Officer"> Chief Executive Officer<br>
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="cpg" value="cello"> Cello, Guitar, Piano ensemble
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="cgp" value="certgp"> Certified Guitar Player
+            </label>
+        </form>
+
+        <p><input type ="button" id="done-button" value="Done"></button></p>
+    </div>
+
+    <div id="result-page">
+        <h2>Score Tally</h2>
+    </div>
+
+    <br>
+    <br>
+
+    <!-- <button id="start">Button Timeout Start</button>
+    <button id="cancel">Button Timeout Cancel</button> -->
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Script -->
+    <script type="text/javascript">
+
+//This keeps track of the scores
+var right = 0;
+var wrong = 0;
+var unanswered = 0;
+var choice;
+let countStartNumber = 0;
+var timeLeft = 30;
+
+
+//Questions Array
+var questions = [{
+  q: "Whom is the most successful guitar player from following options?",
+  answer: ["Touring Rockstar", "fully booked studio guitar player", "Dude with guitar company endorsement", "Guy who's wife is a doctor"],
+  correct: "Guy who's wife is a doctor",
+  images: "assets/images/friends.jpg"
+}, {
+  q: "What does CGP stand for?",
+  answer: ["Certified Goat Planner", "Cello, Guitar, Piano arrangment", "Certified Guitar Player", "Chief Executive Officer"],
+  correct: "Certified Guitar Player",
+  images: "assets/images/friends.jpg"
+}, {
+  q: "Who composed Jiffy Jam?",
+  answer: ["Buster Jones", "Lenny Breau", "Jerry Reed", "Chet Atkins"],
+  correct: "Jerry Reed",
+  images: "assets/images/friends.jpg"
+}];
+
+function timer(){
+  $(".timer").html("<b>" + timeLeft + " Seconds left</b>");
+  function less(){
+    if (timeLeft === 0) {
+      $(".timer").html("<b>0 Seconds left</b>");
+      alert("Time is up");
+      unanswered++;
+      $(".score").html("<div><span class=scores well well-sm>Correct: <span class='badge'>"+ correct +"</span> | Incorrect: <span class='badge'>"+ correct +"</span> | Unanswered: <span class='badge'>" + unanswered + "</span> </span></div>");
+      clearTimeout(tid);
+    } else {
+      timeLeft--;
+      $(".timer").html("<b>" + timeLeft + " Seconds left</b>");
+      console.log(timeLeft);
+    }
+  }
+ let tid = setInterval(less, 1000);
+}
+
+//For each Question, reset the timer
+function nextQuestion(){
+  timeLeft = 5;
+    timer();
+
+  for (var i = 0; i < questions.length; i++) {
+
+     $(".question").html('<h2>' + questions[i].q + '</h2>' );
+
+     $(".answer").html('<form>'
+     + '<p><input type="radio" id="myRadio" value="'+questions[i].answer[0]+'">  ' + questions[i].answer[0] + '</p>'
+     + '<p><input type="radio" id="myRadio" value="'+questions[i].answer[1]+'">  ' + questions[i].answer[1] + '</p>'
+     + '<p><input type="radio" id="myRadio" value="'+questions[i].answer[2]+'">  ' + questions[i].answer[2] + '</p>'
+     + '<p><input type="radio" id="myRadio" value="'+questions[i].answer[3]+'">  ' + questions[i].answer[3] + '</p>');
+//Figure a way to make the selected value equal the users choice
+      function chosen(){
+        alert('Clicked '+ questions[i].answer[i]);
+        choice = document.getElementById("myRadio").value;
+        console.log(choice);
+      }
+   }
+}
+
+//Start function
+function startGame(){
+  alert("You will have 30 seconds for each question. \n You can now begin the game");
+  nextQuestion();
+}
+
+function reset(){
+  correct = 0;
+  incorrect = 0;
+  unanswered = 0;
+  choice = null;
+  countStartNumber = 0;
+  $(".timer").html("<div></div>");
+  $(".score").html("<div></div>");
+  $(".question").html("<div></div>");
+  $(".answer").html("<div></div>");
+}
+
+//Buttons
+$('.start').click(startGame);
+$('.resetbtn').click(reset);
+
+
+// sectioned off code from index Script
+// $("input[type='button']").click(function(){
+//     var cgpRadioValue = $("input[name='cgp']:checked").val();
+//     if(cgpRadioValue){
+//         alert("correct " + cgpRadioValue);
+//         right++;
+//         $("#result-page").append(right);
+//         done();
+//     } else {
+//         wrong++;
+//         alert("wrong");
+//         done();
+//     }
+
+<form>
+    <h3>Which is the most successful guitar player from following options</h3>
+    <label class="radio-inline">
+        <input type="radio" name="success" value="Certified Guitar Player" checked> Touring Rockstar<br>
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="success" value="Chief Executive Officer"> fully booked studio guitar player<br>
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="success" value="dude"> Dude with guitar company endorsement
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="success" value="gww"> Guy who\s wife is a doctor
+    </label>
+</form>
+
+<form>
+    <h3>Who composed Jiffy Jam?</h3>
+    <label class="radio-inline">
+        <input type="radio" name="jiffy" value="other" checked> Lenny Breau<br>
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="jiffy" value="Chief Executive Officer"> Chet Atkins<br>
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="jiffy" value="jr"> Jerry Reed
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="jiffy" value="other"> Buster Jones
+    </label>
+</form>
+
+<form>
+    <h3>What does CGP stand for?</h3>
+    <label class="radio-inline">
+        <input type="radio" name="cgp" value="Certified Guitar Player" checked> Certified Goat Planner<br>
+    </label>
+    <label class="radio-inline">
+    <input type="radio" name="cgp" value="Chief Executive Officer"> Chief Executive Officer<br>
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="cgp" value="cello"> Cello, Guitar, Piano ensemble
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="cgp" value="certgp"> Certified Guitar Player
+    </label>
+</form>
+
+</script>
+
+</body>
+
+</html>

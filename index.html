@@ -5,17 +5,14 @@
 
   <head>
     <meta charset="UTF-8">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <title>Trivia</title>
 
+    <title>Trivia</title>
   </head>
 
   <body>
@@ -27,68 +24,15 @@
     <div id="theForm">
         <div id="time">
         </div>
-        <form>
-            <h3>What does CPG stand for?</h3>
-            <label class="radio-inline">
-                <input type="radio" name="gender" value="Certified Guitar Player" checked> Certified Guitar Player<br>
-            </label>
-            <label class="radio-inline">
-            <input type="radio" name="gender" value="Chief Executive Officer"> Chief Executive Officer<br>
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="gender" value="other"> Other
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="gender" value="other"> Other
-            </label>
-        </form>
-
-        <form>
-            <h3>What does CPG stand for?</h3>
-            <label class="radio-inline">
-                <input type="radio" name="gender" value="Certified Guitar Player" checked> Certified Guitar Player<br>
-            </label>
-            <label class="radio-inline">
-            <input type="radio" name="gender" value="Chief Executive Officer"> Chief Executive Officer<br>
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="gender" value="other"> Other
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="gender" value="other"> Other
-            </label>
-        </form>
-
-        <form>
-            <h3>What does CGP stand for?</h3>
-            <label class="radio-inline">
-                <input type="radio" name="gender" value="Certified Guitar Player" checked> Certified Guitar Player<br>
-            </label>
-            <label class="radio-inline">
-            <input type="radio" name="gender" value="Chief Executive Officer"> Chief Executive Officer<br>
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="gender" value="other"> Cello, Guitar, Piano ensemble
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="gender" value="other"> Certified Goat Planner
-            </label>
-        </form>
-
-        <button id="done-button">Done</button>
-    </div>
+        <!-- //done button -->
+        <p><input type ="button" id="done-button" value="Done"></button></p>
+    </div> <!--id theForm -->
 
     <div id="result-page">
         <h2>Score Tally</h2>
     </div>
 
-
-
-    <br>
-    <br>
-
-    <!-- <button id="start">Button Timeout Start</button>
-    <button id="cancel">Button Timeout Cancel</button> -->
+    <br><br>
 
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -100,23 +44,58 @@
         $("#theForm").hide();
         $("#result-page").hide();
         var intervalId;
-        var right;
-        var wrong;
+        var right = 0;
+        var wrong = 0;
+
+        var questions = [{
+          q: "Whom is the most successful guitar player from following options?",
+          answer: ["Touring Rockstar", "fully booked studio guitarist", "Dude with guitar company endorsement", "Guy who's wife is a doctor"],
+          correct: "Guy who's wife is a doctor",
+          name: "q1",
+          images: "assets/images/mario.jpeg"
+        }, {
+          q: "What does CGP stand for?",
+          answer: ["Certified Goat Planner", "Cello, Guitar, Piano arrangment", "Certified Guitar Player", "Chief Executive Officer"],
+          correct: "Certified Guitar Player",
+          name: "q2",
+          images: "assets/images/pig.jpeg"
+        }, {
+          q: "Who composed Jiffy Jam?",
+          answer: ["Buster Jones", "Lenny Breau", "Jerry Reed", "Chet Atkins"],
+          correct: "Jerry Reed",
+          name: "q3",
+          images: "assets/images/snail.jpeg"
+        }];
+
         $("#start-button").on("click", run);
         $("#start-button").on("click", decrement);
         $("#done-button").on("click", done);
 
+
         function done(){
             $("#theForm").hide();
             $("#result-page").show();
+            $("#result-page").html("<h2 class='game_over'>" + "Game Over" + "</h2>");
+            $("#result-page").append("<h4>" + "correct answers: " + right + "</h4>");
+            $("#result-page").append("<h4>" + "incorrect answers: " + wrong + "</h4>");
+            $("#result-page").append("<img src='assets/images/mario.jpeg'>");
+
             stop();
         }
 
         function run() {
             clearInterval(intervalId);
             intervalId = setInterval(decrement, 1000);
+            for (var i = 0; i < questions.length; i++) {
+                var correctAnswer = questions[i].correct;
+                var questionName = questions[i].name;
+                var selected = $('input[type="radio"][name=' + selected + ']:checked').val();
+
+                $("#theForm").append("<form>" + "<h4>" + questions[i].q + "</h4>" + "<label class='radio-inline'>" + questions[i].answer + "</label>" + "</form");
+            }
             $("#theForm").show();
             $("#start-button").hide();
+
         }
 
         function decrement() {
@@ -129,7 +108,7 @@
             //  ...run the stop function.
             stop();
             //  Alert the user that time is up.
-            alert("All Done");
+            done();
             }
         }
 

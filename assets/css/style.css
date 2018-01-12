@@ -1,6 +1,10 @@
 body {
     text-align: center;
-    background-image: url("assets/images/swirl_pattern/swirl_pattern.png");
+    /* background-image: url("swirl_pattern.png"); */
+}
+
+.game_over {
+    background-color: lightblue;
 }
 
 /* #theform {
