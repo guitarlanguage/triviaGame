@@ -1,5 +1,5 @@
 window.onload = function() {
-    var number = 35;
+    var number = 50;
     $("#theForm").hide();
     $("#result-page").hide();
     var intervalId;
@@ -68,7 +68,8 @@ window.onload = function() {
             $("#theForm").hide();
             grade();
 
-            displayResults();
+            displayResults(event);
+            event.preventDefault();
             $("#result-page").show();
             $("#result-page").prepend("<button id='game_over'>" + "Game Over" + "</button>");
             stop(); //  ...run th stop function.
@@ -80,7 +81,8 @@ window.onload = function() {
             });
         }
     }
-    function grade(){
+    function grade(event){
+        event.preventDefault();
         for (var i = 0; i < questions.length; i++) {
             var correctAnswer = questions[i].correct;
             var questionName = questions[i].name;
@@ -104,7 +106,8 @@ window.onload = function() {
         }
     }
 
-    function done(){
+    function done(event){
+        event.preventDefault();
         $("#theForm").hide();
         $("#result-page").show();
         $("#result-page").html("<button id='game_over'>" + "Game Over" + "</button>");
@@ -113,7 +116,8 @@ window.onload = function() {
         stop();
     }
 
-    function displayResults(){
+    function displayResults(event){
+        event.preventDefault();
         stop();
         $("#result-page").append("<h4 class='make-lower'>" + "<span>" + "correct answers: " + right + "</span>" + "</h4>");
         $("#result-page").append("<h4>" + "incorrect answers: " + wrong + "</h4>");
@@ -127,7 +131,8 @@ window.onload = function() {
             $("#result-page").append("<img src='assets/images/pig.jpeg'>");
 
         }
-        $("#game_over").on("click", function(){
+        $("#game_over").on("click", function(event){
+            event.preventDefault();
         //  console.log("hello");
             location.reload();
         });
@@ -144,7 +149,8 @@ window.onload = function() {
         var noAnswer = 0;
     }
 
-    $("#game_over").on("click", function(){
+    $("#game_over").on("click", function(event){
+        event.preventDefault();
         console.log("hello");
         location.reload();
 
