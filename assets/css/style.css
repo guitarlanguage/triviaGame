@@ -1,11 +1,64 @@
+
+/* #558C89
+#74AFAD
+#D9853B
+#ECECEA */
+
 body {
     text-align: center;
+    background-color: #74AFAD;
     /* background-image: url("swirl_pattern.png"); */
 }
 
-.game_over {
-    background-color: lightblue;
+h1, h4 {
+    margin: 1.1em;
+
+    font-family: 'Joti One', cursive;
+    background-color: #D9853B;
 }
+
+#start-button{
+    padding: 1.5em;
+    width: 20%;
+    background-color: #D9853B;
+}
+
+#done-button{
+    margin-top: 1.2em;
+    padding: 1.5em;
+    width: 20%;
+    background-color: #D9853B;
+}
+
+#game_over {
+    background-color: #D9853B;
+    padding: 1.5em;
+    width: 20%;
+}
+#time{
+    margin-bottom: 1.5em;
+    font-family: 'Joti One', cursive;
+}
+input {
+    padding: 2em;
+}
+
+#theForm{
+    /* color: #D9853B; */
+
+}
+
+label {
+    margin: 1.02em;
+    font-size: 1.03em;
+    padding: 1.25em;
+}
+
+#result-page {
+
+}
+
+
 
 /* #theform {
     display: none;

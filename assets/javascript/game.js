@@ -7,10 +7,9 @@ window.onload = function() {
     var wrong = 0;
     var noAnswer = 0;
 
-
     var q1 = {
       q: "Whom is the most successful guitar player from following options?",
-      answerChoices: ["Touring Rockstar", "fully booked studio guitarist", "Dude with guitar company endorsement", "Guy who's wife is a doctor"],
+      answerChoices: ["Touring Rockstar", "fully booked studio session guy", "Dude with guitar brand endorsement", "Guy who's wife is a doctor"],
       correct: "Guy who's wife is a doctor",
       name: "q1",
       images: "assets/images/mario.jpeg"
@@ -46,9 +45,9 @@ window.onload = function() {
       images: "assets/images/snail.jpeg"
     };
 
-
+    //array of objects
     var questions = [q1, q2, q3, q4, q5];
-
+    //click events
     $("#start-button").on("click", run);
     $("#start-button").on("click", decrement);
     $("#done-button").on("click", grade);
@@ -66,21 +65,30 @@ window.onload = function() {
       //  Show the number in the #time tag.
         $("#time").html("<h2>" + "Time Remaining: " + number + "</h2>");
         if (number === 0) {
-        grade();
-        displayResults();
-        stop(); //  ...run the stop function.
-        done();
+            grade();
+            displayResults();
+            stop(); //  ...run the stop function.
+            done();
+            // $("#game_over").on("click", function(){
+            //     console.log("hello");
+            //     location.reload();
+            // });
         }
     }
     function grade(){
         for (var i = 0; i < questions.length; i++) {
             var correctAnswer = questions[i].correct;
-            console.log(correctAnswer);
             var questionName = questions[i].name;
             var selected = $('input[type="radio"][name=' + questionName + ']:checked').val();
             // console.log(selected);
             //thought I'd use jquery to loop and append the questions and selections. too difficult
             // $("#theForm").append("<form>" + "<h4>" + questions[i].q + "</h4>" + "<label class='radio-inline'>" + "<input type='radio' class='answer'" + questions[i].name + questions[i].answer + "</label>" + "<br>" + "</form");
+            // var iz_checked = true;
+            // $('input').each(function(){
+            //     iz_checked = iz_checked && $(this).is(':checked');
+            // });
+            // if ( ! iz_checked )
+
             if (selected === undefined) {
                 noAnswer++;
             } else if (selected === correctAnswer) {
@@ -94,19 +102,48 @@ window.onload = function() {
     function done(){
         $("#theForm").hide();
         $("#result-page").show();
-        $("#result-page").html("<h2 class='game_over'>" + "Game Over" + "</h2>");
+        $("#result-page").html("<button id='game_over'>" + "Game Over" + "</button>");
+        // var gameOver =
+        // return gameOver;
         stop();
     }
 
     function displayResults(){
-        $("#result-page").append("<h4>" + "correct answers: " + right + "</h4>");
+        stop();
+        $("#result-page").append("<h4>" + "<span>" + "correct answers: " + right + "</span>" + "</h4>");
         $("#result-page").append("<h4>" + "incorrect answers: " + wrong + "</h4>");
+        $("#result-page").append("<h4>" + "missed questions: " + noAnswer+ "</h4>");
         if(right > 3){
             $("#result-page").append("<img src='assets/images/mario.jpeg'>");
         } else {
             $("#result-page").append("<img src='assets/images/pig.jpeg'>");
         }
+        $("#game_over").on("click", function(){
+            console.log("hello");
+            location.reload();
+        });
+    };
+
+
+    function reload(){
+        var number = 30;
+        $("#theForm").hide();
+        $("#result-page").hide();
+        var intervalId;
+        var right = 0;
+        var wrong = 0;
+        var noAnswer = 0;
     }
+
+    $("#game_over").on("click", function(){
+        console.log("hello");
+        location.reload();
+
+        // run();
+        // decrement();
+        // grade();
+        // displayResults();
+    });
 
     function stop() {
         //  Clears our intervalId
@@ -115,4 +152,4 @@ window.onload = function() {
         clearInterval(intervalId);
         // $("#result-page").empty();
     }
-};
+}
