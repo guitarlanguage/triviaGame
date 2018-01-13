@@ -8,7 +8,7 @@ window.onload = function() {
     var noAnswer = 0;
 
     var q1 = {
-      q: "Whom is the most successful guitar player from following options?",
+      q: "Who is the most successful guitar player from following options?",
       answerChoices: ["Touring Rockstar", "fully booked studio session guy", "Dude with guitar brand endorsement", "Guy who's wife is a doctor"],
       correct: "Guy who's wife is a doctor",
       name: "q1",
