@@ -10,11 +10,16 @@ body {
     /* background-image: url("swirl_pattern.png"); */
 }
 
-h1, h4 {
+h1, h2 {
     margin: 1.1em;
 
     font-family: 'Joti One', cursive;
     background-color: #D9853B;
+}
+
+.make-lower {
+    margin-top: 1.35em;
+    /* padding-top: 14px; */
 }
 
 #start-button{

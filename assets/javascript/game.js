@@ -1,5 +1,5 @@
 window.onload = function() {
-    var number = 30;
+    var number = 20;
     $("#theForm").hide();
     $("#result-page").hide();
     var intervalId;
@@ -65,14 +65,19 @@ window.onload = function() {
       //  Show the number in the #time tag.
         $("#time").html("<h2>" + "Time Remaining: " + number + "</h2>");
         if (number === 0) {
+            $("#theForm").hide();
             grade();
+
             displayResults();
-            stop(); //  ...run the stop function.
-            done();
-            // $("#game_over").on("click", function(){
+            $("#result-page").show();
+            $("#result-page").prepend("<button id='game_over'>" + "Game Over" + "</button>");
+            stop(); //  ...run th stop function.
+            // done();
+            // location.reload();
+            $("#game_over").on("click", function(){
             //     console.log("hello");
-            //     location.reload();
-            // });
+            location.reload();
+            });
         }
     }
     function grade(){
@@ -110,16 +115,20 @@ window.onload = function() {
 
     function displayResults(){
         stop();
-        $("#result-page").append("<h4>" + "<span>" + "correct answers: " + right + "</span>" + "</h4>");
+        $("#result-page").append("<h4 class='make-lower'>" + "<span>" + "correct answers: " + right + "</span>" + "</h4>");
         $("#result-page").append("<h4>" + "incorrect answers: " + wrong + "</h4>");
         $("#result-page").append("<h4>" + "missed questions: " + noAnswer+ "</h4>");
         if(right > 3){
+            $("#result-page").append("<h2>" + "You are a champ" + "</h2>");
             $("#result-page").append("<img src='assets/images/mario.jpeg'>");
+
         } else {
+            $("#result-page").append("<h2>" + "Take a left and get me to my destination" + "</h2>");
             $("#result-page").append("<img src='assets/images/pig.jpeg'>");
+
         }
         $("#game_over").on("click", function(){
-            console.log("hello");
+        //  console.log("hello");
             location.reload();
         });
     };
