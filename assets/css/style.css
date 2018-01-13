@@ -21,7 +21,9 @@ h1, h2 {
     margin-top: 1.35em;
     /* padding-top: 14px; */
 }
-
+button {
+    text-align: center;
+}
 #start-button{
     padding: 1.5em;
     width: 20%;

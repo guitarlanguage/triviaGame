@@ -1,5 +1,5 @@
 window.onload = function() {
-    var number = 20;
+    var number = 35;
     $("#theForm").hide();
     $("#result-page").hide();
     var intervalId;
