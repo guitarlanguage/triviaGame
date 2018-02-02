@@ -10,6 +10,10 @@ body {
     /* background-image: url("swirl_pattern.png"); */
 }
 
+audio {
+    display: none;
+}
+
 h1, h2 {
     margin: 1.1em;
 

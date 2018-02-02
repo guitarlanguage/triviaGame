@@ -7,6 +7,41 @@ window.onload = function() {
     var wrong = 0;
     var noAnswer = 0;
 
+    //--------------audio land----------------------
+    // var audioElement = document.createElement('audio');
+    // audioElement.setAttribute("src", "gambling.mp3");
+    //
+    // audioElement.addEventListener('ended', function() {
+    //     this.play();
+    // }, false);
+    //
+    // audioElement.addEventListener("canplay", function() {
+    //     $("#length").text("Duration:" + audioElement.duration + " seconds");
+    //     $("#source").text("Source:" + audioElement.src);
+    //     $("#status").text("Status: Ready to play").css("color", "green");
+    // });
+    //
+    // audioElement.addEventListener("timeupdate", function() {
+    //     $("#currentTime").text("Current second:" + audioElement.currentTime);
+    // });
+    //
+    // $('#play').click(function() {
+    //     audioElement.play();
+    //     $("#status").text("Status: Playing");
+    // });
+    //
+    // $('#pause').click(function() {
+    //     audioElement.pause();
+    //     $("#status").text("Status: Paused");
+    // });
+    //
+    // $('#restart').click(function() {
+    //     audioElement.currentTime = 0;
+    // });
+
+    //--------------audio land----------------------
+
+
     var q1 = {
       q: "Who is the most successful guitar player from following options?",
       answerChoices: ["Touring Rockstar", "fully booked studio session guy", "Dude with guitar brand endorsement", "Guy who's wife is a doctor"],
@@ -39,7 +74,7 @@ window.onload = function() {
 
     var q5 = {
       q: "standard tuning: 2nd string, 9th fret, what note is this?",
-      answerChoices: ["E", "C", "Bb", "Ab"],
+      answerChoices: ["Ab","G", "F", "C#"],
       correct: "Ab",
       name: "q5",
       images: "assets/images/snail.jpeg"
@@ -59,6 +94,7 @@ window.onload = function() {
         intervalId = setInterval(decrement, 1000);
         $("#theForm").show();
         $("#start-button").hide();
+        $('#yes-audio').trigger("play");
     }
     function decrement() {
         number--;
@@ -73,10 +109,7 @@ window.onload = function() {
             $("#result-page").show();
             $("#result-page").prepend("<button id='game_over'>" + "Game Over" + "</button>");
             stop(); //  ...run th stop function.
-            // done();
-            // location.reload();
             $("#game_over").on("click", function(){
-            //     console.log("hello");
             location.reload();
             });
         }
@@ -111,8 +144,8 @@ window.onload = function() {
         $("#theForm").hide();
         $("#result-page").show();
         $("#result-page").html("<button id='game_over'>" + "Game Over" + "</button>");
-        // var gameOver =
-        // return gameOver;
+        //if desired throw in a pause
+        // $('#yes-audio').trigger("pause");
         stop();
     }
 
@@ -133,7 +166,6 @@ window.onload = function() {
         }
         $("#game_over").on("click", function(event){
             event.preventDefault();
-        //  console.log("hello");
             location.reload();
         });
     };
@@ -153,11 +185,6 @@ window.onload = function() {
         event.preventDefault();
         console.log("hello");
         location.reload();
-
-        // run();
-        // decrement();
-        // grade();
-        // displayResults();
     });
 
     function stop() {
