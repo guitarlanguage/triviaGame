@@ -6,6 +6,7 @@ window.onload = function() {
     var right = 0;
     var wrong = 0;
     var noAnswer = 0;
+    // var songs = ["gambling.mp3", "GenkaiLovers.mp3"]
 
     //--------------audio land----------------------
     // var audioElement = document.createElement('audio');
@@ -120,15 +121,6 @@ window.onload = function() {
             var correctAnswer = questions[i].correct;
             var questionName = questions[i].name;
             var selected = $('input[type="radio"][name=' + questionName + ']:checked').val();
-            // console.log(selected);
-            //thought I'd use jquery to loop and append the questions and selections. too difficult
-            // $("#theForm").append("<form>" + "<h4>" + questions[i].q + "</h4>" + "<label class='radio-inline'>" + "<input type='radio' class='answer'" + questions[i].name + questions[i].answer + "</label>" + "<br>" + "</form");
-            // var iz_checked = true;
-            // $('input').each(function(){
-            //     iz_checked = iz_checked && $(this).is(':checked');
-            // });
-            // if ( ! iz_checked )
-
             if (selected === undefined) {
                 noAnswer++;
             } else if (selected === correctAnswer) {
