@@ -6,9 +6,9 @@ window.onload = function() {
     var right = 0;
     var wrong = 0;
     var noAnswer = 0;
-    // var songs = ["gambling.mp3", "GenkaiLovers.mp3"]
-
+    var audioArray = $('.songs');
     //--------------audio land----------------------
+
     // var audioElement = document.createElement('audio');
     // audioElement.setAttribute("src", "gambling.mp3");
     //
@@ -95,7 +95,9 @@ window.onload = function() {
         intervalId = setInterval(decrement, 1000);
         $("#theForm").show();
         $("#start-button").hide();
-        $('#yes-audio').trigger("play");
+
+        var i = Math.floor(Math.random() * audioArray.length);
+        audioArray[i].play();
     }
     function decrement() {
         number--;
