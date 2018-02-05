@@ -1,13 +1,13 @@
-window.onload = function() {
-    var number = 50;
+$(document).ready(function() {
     $("#theForm").hide();
     $("#result-page").hide();
+    var number = 50;
     var intervalId;
     var right = 0;
     var wrong = 0;
     var noAnswer = 0;
     var audioArray = $('.songs');
-    //--------------audio land----------------------
+    //--------------audio land code for a later application--------------------
 
     // var audioElement = document.createElement('audio');
     // audioElement.setAttribute("src", "gambling.mp3");
@@ -93,8 +93,8 @@ window.onload = function() {
     function run() {
         clearInterval(intervalId);
         intervalId = setInterval(decrement, 1000);
-        $("#theForm").show();
         $("#start-button").hide();
+        $("#theForm").show();
 
         var i = Math.floor(Math.random() * audioArray.length);
         audioArray[i].play();
@@ -188,4 +188,4 @@ window.onload = function() {
         clearInterval(intervalId);
         // $("#result-page").empty();
     }
-}
+});
